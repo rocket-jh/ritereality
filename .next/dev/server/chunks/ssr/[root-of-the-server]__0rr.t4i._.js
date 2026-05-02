@@ -216,16 +216,28 @@ __turbopack_context__.s([
     ()=>AREA_UNITS,
     "FACING_OPTIONS",
     ()=>FACING_OPTIONS,
+    "FURNISHING_OPTIONS",
+    ()=>FURNISHING_OPTIONS,
     "LISTING_TYPES",
     ()=>LISTING_TYPES,
+    "OWNERSHIP_TYPES",
+    ()=>OWNERSHIP_TYPES,
+    "PARKING_OPTIONS",
+    ()=>PARKING_OPTIONS,
     "PRICE_UNITS",
     ()=>PRICE_UNITS,
+    "PRIORITY_LEVELS",
+    ()=>PRIORITY_LEVELS,
     "PROJECT_STATUSES",
     ()=>PROJECT_STATUSES,
+    "PROPERTY_AGE_OPTIONS",
+    ()=>PROPERTY_AGE_OPTIONS,
     "PROPERTY_RECORD_STATUSES",
     ()=>PROPERTY_RECORD_STATUSES,
     "PROPERTY_TYPES",
     ()=>PROPERTY_TYPES,
+    "TAG_OPTIONS",
+    ()=>TAG_OPTIONS,
     "USER_ROLES",
     ()=>USER_ROLES
 ]);
@@ -279,16 +291,76 @@ const FACING_OPTIONS = [
 const PROPERTY_RECORD_STATUSES = [
     "draft",
     "published",
+    "sold",
+    "rented",
     "pending",
     "rejected"
 ];
+const PRIORITY_LEVELS = [
+    "normal",
+    "featured",
+    "premium"
+];
+const FURNISHING_OPTIONS = [
+    "unfurnished",
+    "semi-furnished",
+    "fully-furnished"
+];
+const PARKING_OPTIONS = [
+    "none",
+    "covered",
+    "open",
+    "both"
+];
+const PROPERTY_AGE_OPTIONS = [
+    "0-1",
+    "1-5",
+    "5-10",
+    "10+"
+];
+const OWNERSHIP_TYPES = [
+    "freehold",
+    "leasehold",
+    "co-operative",
+    "power-of-attorney"
+];
 const AMENITY_OPTIONS = [
-    "park",
-    "security",
-    "parking",
-    "water_supply",
-    "electricity",
-    "gated_community"
+    "24x7 Security",
+    "Power Backup",
+    "Car Parking",
+    "Lift",
+    "Club House",
+    "Gym",
+    "Swimming Pool",
+    "Kids Play Area",
+    "CCTV Surveillance",
+    "Fire Fighting System",
+    "Rain Water Harvesting",
+    "Gated Community",
+    "Park",
+    "Water Supply",
+    "Electricity",
+    "Intercom Facility",
+    "Visitor Parking",
+    "Maintenance Staff"
+];
+const TAG_OPTIONS = [
+    "Corner Plot",
+    "Main Road Facing",
+    "Gated Society",
+    "Near Park",
+    "Near School",
+    "Near Hospital",
+    "Near Metro",
+    "Prime Location",
+    "Vastu Compliant",
+    "East Facing",
+    "Park Facing",
+    "Ready to Move",
+    "Under Construction",
+    "New Launch",
+    "Investment Opportunity",
+    "Rental Income"
 ];
 }),
 "[project]/lib/models/Property.ts [app-rsc] (ecmascript)", ((__turbopack_context__) => {
@@ -413,6 +485,26 @@ const PropertySchema = new __TURBOPACK__imported__module__$5b$externals$5d2f$mon
         totalFloors: {
             type: Number,
             default: null
+        },
+        furnishing: {
+            type: String,
+            enum: __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$constants$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["FURNISHING_OPTIONS"],
+            default: null
+        },
+        carParking: {
+            type: String,
+            enum: __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$constants$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["PARKING_OPTIONS"],
+            default: null
+        },
+        propertyAge: {
+            type: String,
+            enum: __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$constants$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["PROPERTY_AGE_OPTIONS"],
+            default: null
+        },
+        ownershipType: {
+            type: String,
+            enum: __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$constants$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["OWNERSHIP_TYPES"],
+            default: null
         }
     },
     plotConfig: {
@@ -427,6 +519,11 @@ const PropertySchema = new __TURBOPACK__imported__module__$5b$externals$5d2f$mon
         },
         roadWidth: {
             type: Number,
+            default: null
+        },
+        ownershipType: {
+            type: String,
+            enum: __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$constants$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["OWNERSHIP_TYPES"],
             default: null
         }
     },
@@ -472,6 +569,72 @@ const PropertySchema = new __TURBOPACK__imported__module__$5b$externals$5d2f$mon
             String
         ],
         default: []
+    },
+    tags: {
+        type: [
+            String
+        ],
+        default: []
+    },
+    priceOnRequest: {
+        type: Boolean,
+        default: false
+    },
+    nearbyPlaces: {
+        schools: {
+            type: [
+                {
+                    name: {
+                        type: String,
+                        trim: true
+                    },
+                    distance: {
+                        type: String,
+                        trim: true
+                    }
+                }
+            ],
+            default: []
+        },
+        hospitals: {
+            type: [
+                {
+                    name: {
+                        type: String,
+                        trim: true
+                    },
+                    distance: {
+                        type: String,
+                        trim: true
+                    }
+                }
+            ],
+            default: []
+        },
+        transport: {
+            type: [
+                {
+                    name: {
+                        type: String,
+                        trim: true
+                    },
+                    distance: {
+                        type: String,
+                        trim: true
+                    }
+                }
+            ],
+            default: []
+        }
+    },
+    priorityLevel: {
+        type: String,
+        enum: __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$constants$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["PRIORITY_LEVELS"],
+        default: "normal"
+    },
+    customSortOrder: {
+        type: Number,
+        default: 0
     },
     contactName: {
         type: String,

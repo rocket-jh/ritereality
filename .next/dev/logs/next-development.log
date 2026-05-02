@@ -4,3 +4,21 @@
 {"timestamp":"00:00:26.912","source":"Server","level":"LOG","message":"○ Compiling / ..."}
 {"timestamp":"00:00:27.534","source":"Server","level":"ERROR","message":"⨯ Error: Missing MongoDB URI. Set MONGODB_URI (or MONGODB_URI_FALLBACK)."}
 {"timestamp":"00:00:27.537","source":"Server","level":"ERROR","message":"⨯ Error: Missing MongoDB URI. Set MONGODB_URI (or MONGODB_URI_FALLBACK)."}
+{"timestamp":"00:28:04.635","source":"Server","level":"ERROR","message":"⨯ Error: Missing MongoDB URI. Set MONGODB_URI (or MONGODB_URI_FALLBACK)."}
+{"timestamp":"00:28:04.638","source":"Server","level":"ERROR","message":"⨯ Error: Missing MongoDB URI. Set MONGODB_URI (or MONGODB_URI_FALLBACK)."}
+{"timestamp":"00:28:11.702","source":"Server","level":"ERROR","message":"⨯ Error: Missing MongoDB URI. Set MONGODB_URI (or MONGODB_URI_FALLBACK)."}
+{"timestamp":"00:28:11.704","source":"Server","level":"ERROR","message":"⨯ Error: Missing MongoDB URI. Set MONGODB_URI (or MONGODB_URI_FALLBACK)."}
+{"timestamp":"00:28:16.362","source":"Server","level":"WARN","message":"⚠ Blocked cross-origin request to Next.js dev resource /_next/webpack-hmr from \"vm-7oy9ibzpm2ciqgu4kdzsuwd7.vusercontent.net\".\nCross-origin access to Next.js dev resources is blocked by default for safety.\n\nTo allow this host in development, add it to \"allowedDevOrigins\" in next.config.js and restart the dev server:\n\n// next.config.js\nmodule.exports = {\n  allowedDevOrigins: ['vm-7oy9ibzpm2ciqgu4kdzsuwd7.vusercontent.net'],\n}\n\nRead more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allowedDevOrigins"}
+{"timestamp":"00:29:21.272","source":"Server","level":"ERROR","message":"⨯ Error: Missing MongoDB URI. Set MONGODB_URI (or MONGODB_URI_FALLBACK)."}
+{"timestamp":"00:29:21.274","source":"Server","level":"ERROR","message":"⨯ Error: Missing MongoDB URI. Set MONGODB_URI (or MONGODB_URI_FALLBACK)."}
+{"timestamp":"00:30:57.177","source":"Server","level":"ERROR","message":"⨯ Error: Missing MongoDB URI. Set MONGODB_URI (or MONGODB_URI_FALLBACK)."}
+{"timestamp":"00:30:57.179","source":"Server","level":"ERROR","message":"⨯ Error: Missing MongoDB URI. Set MONGODB_URI (or MONGODB_URI_FALLBACK)."}
+{"timestamp":"00:32:20.879","source":"Server","level":"ERROR","message":"⨯ Error: Missing MongoDB URI. Set MONGODB_URI (or MONGODB_URI_FALLBACK)."}
+{"timestamp":"00:32:20.880","source":"Server","level":"ERROR","message":"⨯ Error: Missing MongoDB URI. Set MONGODB_URI (or MONGODB_URI_FALLBACK)."}
+{"timestamp":"00:33:15.281","source":"Server","level":"ERROR","message":"⨯ Error: Missing MongoDB URI. Set MONGODB_URI (or MONGODB_URI_FALLBACK)."}
+{"timestamp":"00:33:15.282","source":"Server","level":"ERROR","message":"⨯ Error: Missing MongoDB URI. Set MONGODB_URI (or MONGODB_URI_FALLBACK)."}
+{"timestamp":"00:34:23.164","source":"Server","level":"LOG","message":"✓ Compiled in 133ms"}
+{"timestamp":"00:34:52.737","source":"Server","level":"ERROR","message":"⨯ Error: Missing MongoDB URI. Set MONGODB_URI (or MONGODB_URI_FALLBACK)."}
+{"timestamp":"00:34:52.739","source":"Server","level":"ERROR","message":"⨯ Error: Missing MongoDB URI. Set MONGODB_URI (or MONGODB_URI_FALLBACK)."}
+{"timestamp":"00:35:00.717","source":"Server","level":"LOG","message":"✓ Compiled in 34ms"}
+{"timestamp":"00:35:13.640","source":"Server","level":"LOG","message":"✓ Compiled in 35ms"}

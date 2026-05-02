@@ -2,9 +2,14 @@ import { Model, Schema, model, models } from "mongoose";
 import {
   AREA_UNITS,
   FACING_OPTIONS,
+  FURNISHING_OPTIONS,
   LISTING_TYPES,
+  OWNERSHIP_TYPES,
+  PARKING_OPTIONS,
   PRICE_UNITS,
+  PRIORITY_LEVELS,
   PROJECT_STATUSES,
+  PROPERTY_AGE_OPTIONS,
   PROPERTY_RECORD_STATUSES,
   PROPERTY_TYPES,
 } from "@/lib/constants";
@@ -37,11 +42,16 @@ export type PropertyDocument = {
     balconies?: number | null;
     floorNumber?: number | null;
     totalFloors?: number | null;
+    furnishing?: (typeof FURNISHING_OPTIONS)[number] | null;
+    carParking?: (typeof PARKING_OPTIONS)[number] | null;
+    propertyAge?: (typeof PROPERTY_AGE_OPTIONS)[number] | null;
+    ownershipType?: (typeof OWNERSHIP_TYPES)[number] | null;
   };
   plotConfig: {
     plotArea?: number | null;
     facing?: (typeof FACING_OPTIONS)[number] | null;
     roadWidth?: number | null;
+    ownershipType?: (typeof OWNERSHIP_TYPES)[number] | null;
   };
   coverImageUrl: string;
   galleryImageUrls: string[];
@@ -51,6 +61,15 @@ export type PropertyDocument = {
   detailedDescription: string;
   keyHighlights: string[];
   amenities: string[];
+  tags: string[];
+  priceOnRequest: boolean;
+  nearbyPlaces: {
+    schools: { name: string; distance: string }[];
+    hospitals: { name: string; distance: string }[];
+    transport: { name: string; distance: string }[];
+  };
+  priorityLevel: (typeof PRIORITY_LEVELS)[number];
+  customSortOrder: number;
   contactName: string;
   phoneNumber: string;
   whatsappNumber: string;
@@ -97,11 +116,16 @@ const PropertySchema = new Schema<PropertyDocument>(
       balconies: { type: Number, default: null },
       floorNumber: { type: Number, default: null },
       totalFloors: { type: Number, default: null },
+      furnishing: { type: String, enum: FURNISHING_OPTIONS, default: null },
+      carParking: { type: String, enum: PARKING_OPTIONS, default: null },
+      propertyAge: { type: String, enum: PROPERTY_AGE_OPTIONS, default: null },
+      ownershipType: { type: String, enum: OWNERSHIP_TYPES, default: null },
     },
     plotConfig: {
       plotArea: { type: Number, default: null },
       facing: { type: String, enum: FACING_OPTIONS, default: null },
       roadWidth: { type: Number, default: null },
+      ownershipType: { type: String, enum: OWNERSHIP_TYPES, default: null },
     },
     coverImageUrl: { type: String, required: true, trim: true },
     galleryImageUrls: { type: [String], default: [] },
@@ -111,6 +135,24 @@ const PropertySchema = new Schema<PropertyDocument>(
     detailedDescription: { type: String, required: true, trim: true },
     keyHighlights: { type: [String], default: [] },
     amenities: { type: [String], default: [] },
+    tags: { type: [String], default: [] },
+    priceOnRequest: { type: Boolean, default: false },
+    nearbyPlaces: {
+      schools: {
+        type: [{ name: { type: String, trim: true }, distance: { type: String, trim: true } }],
+        default: [],
+      },
+      hospitals: {
+        type: [{ name: { type: String, trim: true }, distance: { type: String, trim: true } }],
+        default: [],
+      },
+      transport: {
+        type: [{ name: { type: String, trim: true }, distance: { type: String, trim: true } }],
+        default: [],
+      },
+    },
+    priorityLevel: { type: String, enum: PRIORITY_LEVELS, default: "normal" },
+    customSortOrder: { type: Number, default: 0 },
     contactName: { type: String, required: true, trim: true },
     phoneNumber: { type: String, required: true, trim: true },
     whatsappNumber: { type: String, required: true, trim: true },

@@ -157,6 +157,10 @@ type PropertyForm = {
   balconies: string;
   floorNumber: string;
   totalFloors: string;
+  furnishing: string;
+  carParking: string;
+  propertyAge: string;
+  ownershipType: string;
   plotArea: string;
   facing: string;
   roadWidth: string;
@@ -168,6 +172,15 @@ type PropertyForm = {
   detailedDescription: string;
   keyHighlightsText: string;
   amenities: string[];
+  tags: string[];
+  priceOnRequest: boolean;
+  nearbyPlaces: {
+    schools: { name: string; distance: string }[];
+    hospitals: { name: string; distance: string }[];
+    transport: { name: string; distance: string }[];
+  };
+  priorityLevel: string;
+  customSortOrder: string;
   contactName: string;
   phoneNumber: string;
   featuredProperty: boolean;
@@ -204,6 +217,10 @@ const initialPropertyForm: PropertyForm = {
   balconies: "",
   floorNumber: "",
   totalFloors: "",
+  furnishing: "",
+  carParking: "",
+  propertyAge: "",
+  ownershipType: "",
   plotArea: "",
   facing: "",
   roadWidth: "",
@@ -215,6 +232,15 @@ const initialPropertyForm: PropertyForm = {
   detailedDescription: "",
   keyHighlightsText: "",
   amenities: [],
+  tags: [],
+  priceOnRequest: false,
+  nearbyPlaces: {
+    schools: [],
+    hospitals: [],
+    transport: [],
+  },
+  priorityLevel: "normal",
+  customSortOrder: "0",
   contactName: "",
   phoneNumber: "",
   featuredProperty: false,

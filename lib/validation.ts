@@ -2,9 +2,14 @@ import { z } from "zod";
 import {
   AREA_UNITS,
   FACING_OPTIONS,
+  FURNISHING_OPTIONS,
   LISTING_TYPES,
+  OWNERSHIP_TYPES,
+  PARKING_OPTIONS,
   PRICE_UNITS,
+  PRIORITY_LEVELS,
   PROJECT_STATUSES,
+  PROPERTY_AGE_OPTIONS,
   PROPERTY_RECORD_STATUSES,
   PROPERTY_TYPES,
   USER_ROLES,
@@ -28,12 +33,28 @@ const flatConfigSchema = z.object({
   balconies: z.number().int().min(0).max(20).nullable().optional(),
   floorNumber: z.number().int().min(0).max(200).nullable().optional(),
   totalFloors: z.number().int().min(0).max(200).nullable().optional(),
+  furnishing: z.enum(FURNISHING_OPTIONS).nullable().optional(),
+  carParking: z.enum(PARKING_OPTIONS).nullable().optional(),
+  propertyAge: z.enum(PROPERTY_AGE_OPTIONS).nullable().optional(),
+  ownershipType: z.enum(OWNERSHIP_TYPES).nullable().optional(),
 });
 
 const plotConfigSchema = z.object({
   plotArea: z.number().positive().nullable().optional(),
   facing: z.enum(FACING_OPTIONS).nullable().optional(),
   roadWidth: z.number().positive().nullable().optional(),
+  ownershipType: z.enum(OWNERSHIP_TYPES).nullable().optional(),
+});
+
+const nearbyPlaceSchema = z.object({
+  name: z.string().min(1),
+  distance: z.string().min(1),
+});
+
+const nearbyPlacesSchema = z.object({
+  schools: z.array(nearbyPlaceSchema).default([]),
+  hospitals: z.array(nearbyPlaceSchema).default([]),
+  transport: z.array(nearbyPlaceSchema).default([]),
 });
 
 const faqSchema = z.object({
@@ -73,6 +94,11 @@ export const propertySchema = z
     detailedDescription: z.string().min(25),
     keyHighlights: z.array(z.string().min(2)).default([]),
     amenities: z.array(z.string().trim().min(1).max(60)).default([]),
+    tags: z.array(z.string().trim().min(1).max(60)).default([]),
+    priceOnRequest: z.boolean().default(false),
+    nearbyPlaces: nearbyPlacesSchema.default({ schools: [], hospitals: [], transport: [] }),
+    priorityLevel: z.enum(PRIORITY_LEVELS).default("normal"),
+    customSortOrder: z.number().int().min(0).default(0),
     contactName: z.string().min(2),
     phoneNumber: z.string().regex(/^\d{10}$/, "Phone number must be exactly 10 digits."),
     whatsappNumber: z.string().regex(/^\d{10}$/, "WhatsApp number must be exactly 10 digits."),

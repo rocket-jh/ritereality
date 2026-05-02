@@ -38,14 +38,67 @@ export const FACING_OPTIONS = [
 export const PROPERTY_RECORD_STATUSES = [
   "draft",
   "published",
+  "sold",
+  "rented",
   "pending",
   "rejected",
 ] as const;
+
+export const PRIORITY_LEVELS = ["normal", "featured", "premium"] as const;
+
+export const FURNISHING_OPTIONS = [
+  "unfurnished",
+  "semi-furnished",
+  "fully-furnished",
+] as const;
+
+export const PARKING_OPTIONS = ["none", "covered", "open", "both"] as const;
+
+export const PROPERTY_AGE_OPTIONS = [
+  "0-1",
+  "1-5",
+  "5-10",
+  "10+",
+] as const;
+
+export const OWNERSHIP_TYPES = ["freehold", "leasehold", "co-operative", "power-of-attorney"] as const;
+
 export const AMENITY_OPTIONS = [
-  "park",
-  "security",
-  "parking",
-  "water_supply",
-  "electricity",
-  "gated_community",
+  "24x7 Security",
+  "Power Backup",
+  "Car Parking",
+  "Lift",
+  "Club House",
+  "Gym",
+  "Swimming Pool",
+  "Kids Play Area",
+  "CCTV Surveillance",
+  "Fire Fighting System",
+  "Rain Water Harvesting",
+  "Gated Community",
+  "Park",
+  "Water Supply",
+  "Electricity",
+  "Intercom Facility",
+  "Visitor Parking",
+  "Maintenance Staff",
+] as const;
+
+export const TAG_OPTIONS = [
+  "Corner Plot",
+  "Main Road Facing",
+  "Gated Society",
+  "Near Park",
+  "Near School",
+  "Near Hospital",
+  "Near Metro",
+  "Prime Location",
+  "Vastu Compliant",
+  "East Facing",
+  "Park Facing",
+  "Ready to Move",
+  "Under Construction",
+  "New Launch",
+  "Investment Opportunity",
+  "Rental Income",
 ] as const;
