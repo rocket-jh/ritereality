@@ -4349,17 +4349,16 @@ function normalizeMetadataPageToRoute(page, isDynamic) {
 if ("TURBOPACK compile-time falsy", 0) //TURBOPACK unreachable
 ;
 else {
-    if ("TURBOPACK compile-time falsy", 0) //TURBOPACK unreachable
-    ;
-    else {
+    if ("TURBOPACK compile-time truthy", 1) {
         if ("TURBOPACK compile-time truthy", 1) {
             if ("TURBOPACK compile-time truthy", 1) {
-                module.exports = __turbopack_context__.r("[externals]/next/dist/compiled/next-server/app-page-turbo.runtime.dev.js [external] (next/dist/compiled/next-server/app-page-turbo.runtime.dev.js, cjs)");
+                module.exports = __turbopack_context__.r("[externals]/next/dist/compiled/next-server/app-page-turbo-experimental.runtime.dev.js [external] (next/dist/compiled/next-server/app-page-turbo-experimental.runtime.dev.js, cjs)");
             } else //TURBOPACK unreachable
             ;
         } else //TURBOPACK unreachable
         ;
-    }
+    } else //TURBOPACK unreachable
+    ;
 }
 }),
 "[project]/node_modules/next/dist/esm/server/route-kind.js [app-rsc] (ecmascript, Next.js server utility)", ((__turbopack_context__) => {
@@ -4664,7 +4663,7 @@ const routeModule = new __TURBOPACK__imported__module__$5b$project$5d2f$node_mod
     userland: {
         loaderTree: tree
     },
-    distDir: ("TURBOPACK compile-time value", ".next\\dev") || '',
+    distDir: ("TURBOPACK compile-time value", ".next/dev") || '',
     relativeProjectDir: ("TURBOPACK compile-time value", "") || ''
 });
 function buildDynamicSegmentPlaceholder(param) {
