@@ -26,6 +26,7 @@ import {
   FiPlus,
   FiSave,
   FiShield,
+  FiTrash2,
   FiTruck,
   FiUsers,
   FiX,
@@ -2816,7 +2817,7 @@ export default function CmsApp() {
                           "Cover image is set from uploads. You can also pick one from gallery using \"Set Cover Image\"."}
                       </p>
                       {coverPreviewUrl || propertyForm.coverImageUrl ? (
-                        <div className="mt-3 overflow-hidden rounded-lg border border-zinc-200 bg-white">
+                        <div className="group relative mt-3 overflow-hidden rounded-lg border border-zinc-200 bg-white">
                           <Image
                             src={coverPreviewUrl || propertyForm.coverImageUrl}
                             alt="Cover image preview"
@@ -2825,6 +2826,21 @@ export default function CmsApp() {
                             unoptimized
                             className="h-44 w-full object-cover"
                           />
+                          <button
+                            type="button"
+                            onClick={() => {
+                              setPropertyForm((prev) => ({
+                                ...prev,
+                                coverImageUrl: "",
+                              }));
+                              setCoverPreviewUrl(null);
+                              setMessage("Cover image removed.");
+                            }}
+                            className="absolute right-2 top-2 flex h-8 w-8 items-center justify-center rounded-full bg-red-600 text-white opacity-0 shadow-md transition-opacity hover:bg-red-700 group-hover:opacity-100"
+                            title="Remove cover image"
+                          >
+                            <FiTrash2 size={16} />
+                          </button>
                         </div>
                       ) : null}
                     </div>
@@ -2889,30 +2905,41 @@ export default function CmsApp() {
                           {propertyForm.galleryImageUrls.map((url, index) => (
                             <div
                               key={`${url}-${index}`}
-                              className="overflow-hidden rounded-lg border border-zinc-200 bg-white"
+                              className="group relative overflow-hidden rounded-lg border border-zinc-200 bg-white"
                             >
-                              <Image
-                                src={url}
-                                alt={`Gallery ${index + 1}`}
-                                width={400}
-                                height={260}
-                                unoptimized
-                                className="h-28 w-full object-cover"
-                              />
-                              <div className="space-y-2 p-2">
+                              <div className="relative">
+                                <Image
+                                  src={url}
+                                  alt={`Gallery ${index + 1}`}
+                                  width={400}
+                                  height={260}
+                                  unoptimized
+                                  className="h-28 w-full object-cover"
+                                />
+                                <button
+                                  type="button"
+                                  onClick={() => removeGalleryImage(index)}
+                                  className="absolute right-2 top-2 flex h-7 w-7 items-center justify-center rounded-full bg-red-600 text-white opacity-0 shadow-md transition-opacity hover:bg-red-700 group-hover:opacity-100"
+                                  title="Remove image"
+                                >
+                                  <FiTrash2 size={14} />
+                                </button>
+                              </div>
+                              <div className="flex items-center justify-between gap-2 p-2">
                                 <button
                                   type="button"
                                   onClick={() => setCoverFromGallery(url)}
-                                  className="w-full rounded-md border border-zinc-300 px-2 py-1 text-xs font-semibold text-zinc-700"
+                                  className="flex-1 rounded-md border border-zinc-300 px-2 py-1 text-xs font-semibold text-zinc-700 hover:border-[#1e4fb8] hover:text-[#1e4fb8]"
                                 >
-                                  Set Cover Image
+                                  Set as Cover
                                 </button>
                                 <button
                                   type="button"
                                   onClick={() => removeGalleryImage(index)}
-                                  className="w-full rounded-md border border-red-300 bg-red-50 px-2 py-1 text-xs font-semibold text-red-700"
+                                  className="flex h-7 w-7 items-center justify-center rounded-md border border-red-300 bg-red-50 text-red-700 hover:bg-red-100"
+                                  title="Remove image"
                                 >
-                                  Remove
+                                  <FiTrash2 size={14} />
                                 </button>
                               </div>
                             </div>
