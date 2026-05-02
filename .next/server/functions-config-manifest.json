@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "functions": {
+    "/api/auth/bootstrap-admin": {},
+    "/api/auth/login": {},
+    "/api/auth/logout": {},
+    "/api/auth/me": {},
+    "/api/auth/setup-status": {},
+    "/api/banner": {},
+    "/api/banner/[id]": {},
+    "/api/imagekit/auth": {},
+    "/api/properties": {},
+    "/api/properties/[id]": {},
+    "/api/users": {}
+  }
+}

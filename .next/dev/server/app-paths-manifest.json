@@ -1,0 +1,17 @@
+{
+  "/api/auth/login/route": "app/api/auth/login/route.js",
+  "/api/auth/me/route": "app/api/auth/me/route.js",
+  "/api/auth/setup-status/route": "app/api/auth/setup-status/route.js",
+  "/api/banner/route": "app/api/banner/route.js",
+  "/api/blog/categories/route": "app/api/blog/categories/route.js",
+  "/api/blog/media/route": "app/api/blog/media/route.js",
+  "/api/blog/posts/route": "app/api/blog/posts/route.js",
+  "/api/blog/settings/route": "app/api/blog/settings/route.js",
+  "/api/imagekit/auth/route": "app/api/imagekit/auth/route.js",
+  "/api/properties/route": "app/api/properties/route.js",
+  "/api/users/route": "app/api/users/route.js",
+  "/blog/cms/page": "app/blog/cms/page.js",
+  "/cms/page": "app/cms/page.js",
+  "/login/page": "app/login/page.js",
+  "/page": "app/page.js"
+}

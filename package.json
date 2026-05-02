@@ -1,0 +1,44 @@
+{
+  "name": "riterealty",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "predev": "node -e \"require('node:fs').rmSync('.next/dev/cache/turbopack',{recursive:true,force:true})\"",
+    "dev": "next dev --turbo",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint"
+  },
+  "dependencies": {
+    "@imagekit/next": "^2.1.5",
+    "@tiptap/core": "^3.22.5",
+    "@tiptap/extension-image": "^3.22.5",
+    "@tiptap/extension-link": "^3.22.5",
+    "@tiptap/extension-table": "^3.22.5",
+    "@tiptap/extension-underline": "^3.22.5",
+    "@tiptap/react": "^3.22.5",
+    "@tiptap/starter-kit": "^3.22.5",
+    "@vercel/blob": "^2.3.3",
+    "bcryptjs": "^3.0.3",
+    "jose": "^6.2.3",
+    "mongodb": "^7.2.0",
+    "mongoose": "^9.6.1",
+    "next": "16.2.4",
+    "react": "19.2.4",
+    "react-dom": "19.2.4",
+    "react-icons": "^5.6.0",
+    "turbopack": "^0.0.1",
+    "zod": "^4.4.1"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "babel-plugin-react-compiler": "1.0.0",
+    "eslint": "^9",
+    "eslint-config-next": "16.2.4",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  }
+}
