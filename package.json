@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "predev": "node -e \"require('node:fs').rmSync('.next/dev/cache/turbopack',{recursive:true,force:true})\"",
+    "predev": "node -e \"const fs=require('node:fs');fs.rmSync('.next/dev/cache/turbopack',{recursive:true,force:true});fs.rmSync('.next/dev/node_modules',{recursive:true,force:true})\"",
     "dev": "next dev --turbo",
     "build": "next build",
     "start": "next start",

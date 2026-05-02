@@ -1548,6 +1548,16 @@ export default function CmsApp() {
     }));
   }
 
+  function removeGalleryPreview(index: number) {
+    setGalleryPreviewUrls((prev) => {
+      const urlToRevoke = prev[index];
+      if (urlToRevoke?.startsWith("blob:")) {
+        URL.revokeObjectURL(urlToRevoke);
+      }
+      return prev.filter((_, i) => i !== index);
+    });
+  }
+
   function setCoverFromGallery(url: string) {
     setPropertyForm((prev) => ({ ...prev, coverImageUrl: url }));
     setCoverPreviewUrl(url);
@@ -2882,18 +2892,30 @@ export default function CmsApp() {
                           {galleryPreviewUrls.map((url, index) => (
                             <div
                               key={url}
-                              className="overflow-hidden rounded-lg border border-blue-200 bg-blue-50"
+                              className="group relative overflow-hidden rounded-lg border border-blue-200 bg-blue-50"
                             >
-                              <Image
-                                src={url}
-                                alt={`Selected gallery preview ${index + 1}`}
-                                width={400}
-                                height={260}
-                                unoptimized
-                                className="h-28 w-full object-cover"
-                              />
+                              <div className="relative">
+                                <Image
+                                  src={url}
+                                  alt={`Selected gallery preview ${index + 1}`}
+                                  width={400}
+                                  height={260}
+                                  unoptimized
+                                  className="h-28 w-full object-cover"
+                                />
+                                {!uploadingGallery && (
+                                  <button
+                                    type="button"
+                                    onClick={() => removeGalleryPreview(index)}
+                                    className="absolute right-2 top-2 flex h-7 w-7 items-center justify-center rounded-full bg-red-600 text-white opacity-0 shadow-md transition-opacity hover:bg-red-700 group-hover:opacity-100"
+                                    title="Remove preview"
+                                  >
+                                    <FiTrash2 size={14} />
+                                  </button>
+                                )}
+                              </div>
                               <p className="p-2 text-xs font-semibold text-[#1e4fb8]">
-                                Previewing upload
+                                {uploadingGallery ? "Uploading..." : "Previewing upload"}
                               </p>
                             </div>
                           ))}
